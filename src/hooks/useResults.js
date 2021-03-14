@@ -22,7 +22,7 @@ export default () => {
     }
 
     useEffect(()=>{
-        searchApi('pasta', 'New York City')
+        searchApi('', 'United States')
     },[])
 
     return [searchApi, results, errorMessage];
