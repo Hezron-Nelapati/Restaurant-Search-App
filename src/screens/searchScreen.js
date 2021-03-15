@@ -4,6 +4,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import SearchBar from '../components/searchBar';
 import useResults from '../hooks/useResults';
 import ResultList from '../components/ResultList';
+import { Ionicons } from '@expo/vector-icons';
 
 const SearchScreen = () => {
 
@@ -29,15 +30,22 @@ const SearchScreen = () => {
                 onTermChange={setTerm}                         
                 onTermSubmit={() => searchApi(term,location)}    
             />
-            <TextInput 
-                style={styles.inputStyle}
-                placeholder= 'Location'
-                autoCorrect={true}
-                autoCapitalize="none"
-                value={location}
-                onChangeText={setLocation}
-                onEndEditing={() => searchApi(term, location)}
-            />
+            <View style={styles.locationContainer}>
+                <Ionicons 
+                    name="ios-location-outline"
+                    style={styles.locationIconStyle}
+                />
+                <TextInput 
+                    style={styles.inputStyle}
+                    placeholder= 'Location'
+                    autoCorrect={true}
+                    autoCapitalize="none"
+                    value={location}
+                    onChangeText={setLocation}
+                    onEndEditing={() => searchApi(term, location)}
+                />
+            </View>
+            
             <ResultList 
                 results={filterResultsByPrice('$')} 
                 title='Cost Effective' 
@@ -61,17 +69,28 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         flex: 1
     },
-    inputStyle: {
-        marginTop: 10,
+    locationContainer: {
         backgroundColor: '#F0EEEE',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+        width: 220,
+        alignSelf: 'flex-end',
+        marginVertical: 10,
+        marginRight: 15,
+        borderRadius: 5
+    },
+    inputStyle: {
         height: 30,
         borderRadius: 5,
         width: 180,
-        alignSelf: 'flex-end',
-        marginHorizontal: 15,
-        fontSize: 16,
-        marginBottom: 3,
-        paddingLeft: 5
+        alignSelf: 'center',
+        fontSize: 16
+    },
+    locationIconStyle: {
+        fontSize: 17,
+        alignSelf: 'center',
+        paddingLeft: 10
     }
 });
 

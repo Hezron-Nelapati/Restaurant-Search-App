@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
     },
     searchContainer: {
         flexDirection: 'column',
-        marginVertical: 10,
+        marginTop: 20,
+        marginBottom: 10,
         marginHorizontal: 20,
         alignItems: 'flex-end'
     },
